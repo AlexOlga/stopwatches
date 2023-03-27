@@ -11,7 +11,7 @@ export default {
   name: 'App',
   data(){
     return {
-      watches:[{id:1, time: 10, play:true},{id:2, time: 20, play:false}]
+      watches:[{id:1, time: 10, active:true},{id:2, time: 20, active:false}]
     }
   },
   components: {

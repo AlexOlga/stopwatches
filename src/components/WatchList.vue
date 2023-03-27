@@ -1,6 +1,6 @@
 <template>
     <div>     
-      <ul>
+      <ul v-on:target-play="targetPlay">
         <WatchItem v-for="item in watches"
         v-bind:watch="item"
         v-bind:key="item.id"        
@@ -24,6 +24,8 @@
   </script>
   
   <style scoped>
+
+
     ul {
       list-style: none;
       margin: 0;

@@ -3,11 +3,13 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+html{
+    font-size: 10px;
+}
 body {
     font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
     background: var(--backgound-color);
     color: var(--text-color);
-    font-size: 22px;
+    font-size: 2.2rem;
 
 }
