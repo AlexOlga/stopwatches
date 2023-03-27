@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gotham Pro', Helvetica, Arial, sans-serif;
+    background: var(--backgound-color);
+    color: var(--text-color);
+    font-size: 22px;
+
+}

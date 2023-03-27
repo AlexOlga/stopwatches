@@ -1,0 +1,12 @@
+@font-face {
+	font-family: "Gotham Pro";
+	src: url(../fonts/gothampro.ttf);
+}
+
+:root {
+	--backgound-color: #353638;
+	--block-backgound-color: #696969;
+	--text-color: #9e9e9e;
+	--text-color-active: #ffffff;
+}
+ 
