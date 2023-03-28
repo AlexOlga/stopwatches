@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-    <WatchList v-bind:watches="watches" @watch-stop="watchStop" @watch-play="watchPlay" @watch-pause="watchPause" />
-    <AddWatch @watch-create="createWatch" />
+    <WatchList v-bind:watches="watches" @watch-stop="watchStop" @watch-play="watchPlay" @watch-pause="watchPause" @watch-create="createWatch" />
+       
   </div>
 </template>
 
 <script>
 import WatchList from "@/components/WatchList";
-import AddWatch from "@/components/addWatch.vue";
 
 const startWatch = (watch) => {
   watch.seconds++;
@@ -26,14 +25,16 @@ export default {
   data() {
     return {
       watches: [
-        { id: 1, seconds: 0, minuts: 0, hours: 0, active: false, interval: undefined },
-        { id: 2, seconds: 53, minuts: 59, hours: 0, active: false, interval: undefined },
+        { id: 1, seconds: 40, minuts: 2, hours: 0, active: false, interval: undefined },
+        { id: 2, seconds: 32, minuts: 25, hours: 0, active: false, interval: undefined },
+        { id: 3, seconds: 15, minuts: 30, hours: 1, active: false, interval: undefined },
+        { id: 4, seconds: 33, minuts: 20, hours: 1, active: false, interval: undefined },
       ],
     };
   },
   components: {
     WatchList,
-    AddWatch
+       
   },
   methods: {
     watchStop: function (id) {
@@ -74,8 +75,5 @@ export default {
 @import "./assets/css/variables.css";
 @import "./assets/css/global.css";
 
-#app {
-  padding: 72px 0;
-  margin: 0 auto;
-}
+
 </style>
