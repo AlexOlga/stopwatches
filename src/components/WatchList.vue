@@ -5,7 +5,8 @@
         v-bind:watch="item"
         v-bind:key="item.id"         
         v-on:watch-stop="watchStop"
-        v-on:watch-toggle="watchToggle"            
+        v-on:watch-play="watchPlay" 
+        v-on:watch-pause="watchPause"            
         />
        
       </ul>
@@ -25,8 +26,11 @@
     watchStop(id){
       this.$emit('watch-stop', id)
     },
-    watchToggle(id){
-      this.$emit('watch-toggle', id)
+    watchPlay(id){
+      this.$emit('watch-play', id)
+    },
+    watchPause(id){
+      this.$emit('watch-pause', id)
     }
   }
   }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <WatchList v-bind:watches="watches" @watch-stop="watchStop" @watch-toggle="toggleWatch"/>
-    <AddWatch @watch-create="createWatch"/>
+    <WatchList v-bind:watches="watches" @watch-stop="watchStop" @watch-play="watchPlay" @watch-pause="watchPause" />
+    <AddWatch @watch-create="createWatch" />
   </div>
 </template>
 
@@ -9,15 +9,15 @@
 import WatchList from "@/components/WatchList";
 import AddWatch from "@/components/addWatch.vue";
 
-const startWatch=(watch)=>{
+const startWatch = (watch) => {
   watch.seconds++;
-  if (watch.seconds>59){
+  if (watch.seconds > 59) {
     watch.minuts++;
-    watch.seconds=0
+    watch.seconds = 0
   }
-  if (watch.minuts>59){
+  if (watch.minuts > 59) {
     watch.hours++;
-    watch.minuts=0
+    watch.minuts = 0
   }
 
 }
@@ -26,8 +26,8 @@ export default {
   data() {
     return {
       watches: [
-        { id: 1, seconds:0, minuts:0, hours:0, isPlay:true, active: true, interval:undefined },
-        { id: 2, seconds:53, minuts:59, hours:0, isPlay:true, active: true, interval:undefined  },
+        { id: 1, seconds: 0, minuts: 0, hours: 0, active: false, interval: undefined },
+        { id: 2, seconds: 53, minuts: 59, hours: 0, active: false, interval: undefined },
       ],
     };
   },
@@ -37,22 +37,33 @@ export default {
   },
   methods: {
     watchStop: function (id) {
-      const watch = this.watches.find((item) => {       
+      const watch = this.watches.find((item) => {
         return item.id === id;
-      });     
-      watch.active=false;
+      });
+      watch.active = false;
       clearInterval(watch.interval);
+      watch.seconds = 0;
+      watch.minuts = 0;
+      watch.hours = 0;
+
     },
-    createWatch:function(watch){
-        this.watches.push(watch)
+    createWatch: function (watch) {
+      this.watches.push(watch)
     },
-    toggleWatch: function (id) {
-      const watch = this.watches.find((item) => {       
+    watchPlay: function (id) {
+      const watch = this.watches.find((item) => {
         return item.id === id;
-      }); 
-     
-      watch.interval=setInterval(()=>startWatch(watch),1000);
-      
+      });
+      watch.active = true;
+      watch.interval = setInterval(() => startWatch(watch), 1000);
+
+    },
+    watchPause: function (id) {
+      const watch = this.watches.find((item) => {
+        return item.id === id;
+      });
+      watch.active = false;
+      clearInterval(watch.interval);
     }
 
   },

@@ -39,7 +39,7 @@ export default {
                 seconds:0,
                 minuts:0, 
                 hours:0,
-                active: true,
+                active: false,
             }
             console.log(newWatch )
             this.$emit('watch-create', newWatch)
